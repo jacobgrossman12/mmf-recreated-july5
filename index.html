@@ -3,86 +3,97 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Israel Finance and Mortgage Company | Moville</title>
+    <title>Israel Finance and Mortgage Company</title>
     <meta name="description" content="Moville Mortgage & Finance helps clients navigate mortgages and property financing in Israel.">
     <style>
       :root {
-        --primary: #0f2d59;
-        --secondary: #d4af37;
-        --dark: #1a1a1a;
-        --light: #f8f9fa;
-        --gray: #e0e0e0;
-        --text: #333333;
-        --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        --blue: #285a78;
+        --navy: #283f6f;
+        --text: #222222;
+        --muted: #666666;
+        --white: #ffffff;
+        --light: #f7f7f7;
+        --border: #d8d8d8;
+        --max: 980px;
+        --serif: Georgia, "Times New Roman", serif;
+        --sans: Arial, Helvetica, sans-serif;
+        --shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
       }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        margin: 0;
         color: var(--text);
-        line-height: 1.6;
-        background-color: #ffffff;
+        background: var(--white);
+        font-family: var(--sans);
+        line-height: 1.5;
       }
+      a { color: inherit; text-decoration: none; }
+      a:hover { color: #006ea6; }
+      img { max-width: 100%; }
 
-      /* Navigation & Header */
-      header {
-        background-color: var(--primary);
-        color: #ffffff;
-        padding: 1rem 2rem;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      }
-
-      .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
+      /* Header & Topbar Layout */
+      .topbar { background: var(--white); padding: 30px 24px 22px; }
+      .topbar-inner {
+        align-items: center;
         display: flex;
         justify-content: space-between;
+        margin: 0 auto;
+        max-width: 960px;
+      }
+      .logo img { display: block; width: 205px; }
+      .contact-strip {
         align-items: center;
-      }
-
-      .logo {
-        font-weight: 700;
-        font-size: 1.4rem;
-        color: var(--secondary);
-        text-decoration: none;
-        letter-spacing: 0.5px;
-      }
-
-      .nav-links {
+        color: #333;
         display: flex;
-        gap: 2rem;
-        list-style: none;
+        font-size: 14px;
+        gap: 9px;
+        white-space: nowrap;
       }
-
-      .nav-links a {
-        color: #ffffff;
-        text-decoration: none;
-        font-weight: 500;
-        transition: var(--transition);
+      .contact-strip a { text-decoration: underline; }
+      .social-icon { height: 25px; width: 25px; }
+      
+      /* Navigation Layer */
+      .main-nav-wrap { background: var(--white); border-bottom: 6px solid var(--blue); position: relative; z-index: 100; }
+      .nav-toggle {
+        background: var(--blue);
+        border: 0;
+        color: var(--white);
+        cursor: pointer;
+        display: none;
+        font-size: 16px;
+        letter-spacing: 0.04em;
+        padding: 14px 18px;
+        text-transform: uppercase;
+        width: 100%;
       }
-
-      .nav-links a:hover {
-        color: var(--secondary);
+      .site-nav {
+        align-items: center;
+        display: flex;
+        gap: 58px;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 990px;
+        min-height: 84px;
       }
+      .site-nav a {
+        color: #252525;
+        font-size: 17px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .site-nav a:hover { color: #006ea6; }
 
-      /* ==========================================================================
-         NATIVE HERO CAROUSEL (Renders entirely without image asset dependencies)
-         ========================================================================== */
-      .hero-carousel {
+      /* --- Hero Slider Layout --- */
+      .hero-carousel-container {
         position: relative;
-        height: 65vh;
-        min-height: 450px;
+        width: 100%;
+        min-height: 650px;
+        height: 75vh;
         overflow: hidden;
+        background-color: #123e58;
       }
-
       .hero-slide {
         position: absolute;
         top: 0;
@@ -90,486 +101,700 @@
         width: 100%;
         height: 100%;
         opacity: 0;
-        transition: opacity 1s ease-in-out;
+        visibility: hidden;
+        transition: opacity 0.8s ease-in-out, visibility 0.8s;
+        background-position: center;
+        background-size: cover;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 80px 24px;
+        text-align: center;
       }
-
-      .hero-slide.active {
+      .hero-slide.is-active {
         opacity: 1;
+        visibility: visible;
       }
-
-      /* Native Geometric Graphics Engines instead of external images */
-      .slide-geo-1 {
-        background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
-                    linear-gradient(135deg, #0f2d59 0%, #07162c 100%);
+      .hero-slide-1 {
+        background-image: linear-gradient(rgba(18, 62, 88, 0.82), rgba(18, 62, 88, 0.82)), url("https://static.wixstatic.com/media/nsplsh_4d6f6c6865317151525749~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1265,h_824,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/nsplsh_4d6f6c6865317151525749~mv2_d_6000_4000_s_4_2.jpg");
       }
-
-      .slide-geo-2 {
-        background: linear-gradient(45deg, rgba(15, 45, 89, 0.95) 0%, rgba(7, 22, 44, 0.95) 100%),
-                    repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(212, 175, 55, 0.03) 40px, rgba(212, 175, 55, 0.03) 80px);
+      .hero-slide-2 {
+        background-image: linear-gradient(rgba(18, 62, 88, 0.82), rgba(18, 62, 88, 0.82)), url("https://static.wixstatic.com/media/nsplsh_ef8bc5b3a9004734a27a3360342e6487~mv2.jpg/v1/fill/w_1898,h_998,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/nsplsh_ef8bc5b3a9004734a27a3360342e6487~mv2.jpg");
       }
-
-      .slide-geo-3 {
-        background: radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
-                    linear-gradient(180deg, #0a1f3d 0%, #030a14 100%);
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        color: #ffffff;
-        max-width: 850px;
-        padding: 0 2rem;
-      }
-
-      .hero-content h1 {
-        font-size: 3.2rem;
-        margin-bottom: 1.2rem;
-        color: #ffffff;
-        font-weight: 700;
-        letter-spacing: -0.5px;
-      }
-
-      .hero-content p {
-        font-size: 1.3rem;
-        margin-bottom: 2rem;
-        color: rgba(255, 255, 255, 0.9);
-        font-weight: 300;
-      }
-
-      .btn {
-        display: inline-block;
-        background-color: var(--secondary);
-        color: var(--primary);
-        padding: 0.85rem 2.2rem;
-        text-decoration: none;
-        font-weight: 700;
-        border-radius: 4px;
-        transition: var(--transition);
-        border: none;
-        cursor: pointer;
-      }
-
-      .btn:hover {
-        background-color: #ffffff;
-        color: var(--primary);
-        transform: translateY(-2px);
-      }
-
-      /* Global Content Section Layouts */
-      section {
-        padding: 5rem 2rem;
-        max-width: 1200px;
+      .hero-content-box {
+        color: var(--white);
+        max-width: 980px;
         margin: 0 auto;
       }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 3rem;
-        font-size: 2.25rem;
-        color: var(--primary);
+      .hero h1 {
+        color: var(--white);
+        font-family: var(--serif);
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 400;
+        letter-spacing: 0.07em;
+        line-height: 1.1;
+        margin: 0 auto 35px;
+        text-transform: uppercase;
       }
-
-      .section-title::after {
-        content: '';
-        display: block;
-        width: 50px;
-        height: 3px;
-        background-color: var(--secondary);
-        margin: 0.5rem auto 0;
+      .hero p {
+        font-size: clamp(1.2rem, 2.5vw, 2rem);
+        line-height: 1.3;
+        margin: 0 auto 36px;
+        max-width: 900px;
       }
-
-      /* Services Matrix Layout */
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-      }
-
-      .service-card {
-        background: var(--light);
-        padding: 2.5rem 2rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-        transition: var(--transition);
-        border-top: 4px solid var(--primary);
-      }
-
-      .service-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 20px rgba(0,0,0,0.08);
-      }
-
-      .service-card h3 {
-        margin-bottom: 1rem;
-        color: var(--primary);
-      }
-
-      /* Pre-Qualification Form Section */
-      .form-section {
-        background-color: var(--light);
-        max-width: 100%;
-        width: 100%;
-      }
-
-      .form-container {
-        max-width: 700px;
-        margin: 0 auto;
-        background: #ffffff;
-        padding: 3rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      }
-
-      .form-group {
-        margin-bottom: 1.5rem;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-        color: var(--primary);
-      }
-
-      .form-group input, .form-group select {
-        width: 100%;
-        padding: 0.8rem;
-        border: 1px solid var(--gray);
-        border-radius: 4px;
-        font-size: 1rem;
-      }
-
-      /* ==========================================================================
-         TESTIMONIALS SLIDER LAYER (SKELETON DESIGNED FOR EXACTLY 12 SCREENSHOTS)
-         ========================================================================== */
-      .testimonials-section {
-        background-color: #ffffff;
-        overflow: hidden;
-      }
-
-      .testimonial-slider-container {
-        position: relative;
-        max-width: 850px;
-        margin: 0 auto;
-        padding: 0 3.5rem;
-      }
-
-      .testimonial-slider-wrapper {
-        overflow: hidden;
-        width: 100%;
-      }
-
-      .testimonial-slider-track {
-        display: flex;
-        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-        align-items: center;
-      }
-
-      .testimonial-image-slide {
-        min-width: 100%;
-        flex-shrink: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 15px;
-      }
-
-      /* Controls dynamic screenshot size transformations natively */
-      .testimonial-image-slide img {
-        max-width: 100%;
-        height: auto;
-        max-height: 550px;
-        object-fit: contain;
-        border-radius: 8px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-        border: 1px solid var(--gray);
-        display: block;
-        background-color: #fcfcfc;
-      }
-
-      .slider-btn {
+      .hero-arrow {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background-color: var(--primary);
-        color: #ffffff;
-        border: none;
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
+        background: transparent;
+        border: 0;
+        color: rgba(255, 255, 255, 0.6);
         cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.25rem;
-        transition: var(--transition);
+        font-family: var(--serif);
+        font-size: 64px;
         z-index: 10;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        transition: color 0.2s;
       }
+      .hero-arrow:hover { color: #ffffff; }
+      .hero-prev { left: 20px; }
+      .hero-next { right: 20px; }
 
-      .slider-btn:hover {
-        background-color: var(--secondary);
-        color: var(--primary);
+      /* Shared Elements */
+      .wix-button {
+        background: var(--navy);
+        border: 2px solid var(--navy);
+        color: var(--white);
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        min-width: 150px;
+        padding: 13px 27px;
+        text-align: center;
+        text-transform: uppercase;
       }
+      .wix-button:hover { background: var(--white); color: var(--navy); }
+      .section { padding: 64px 24px; }
+      .section-inner { margin: 0 auto; max-width: var(--max); }
+      .center { text-align: center; }
+      
+      .lead-block h2 {
+        color: var(--navy);
+        font-size: clamp(2rem, 5vw, 3.8rem);
+        font-weight: 700;
+        line-height: 1.15;
+        margin: 0 auto 24px;
+        max-width: 880px;
+        text-transform: uppercase;
+      }
+      .lead-block p {
+        color: #4a4a4a;
+        font-size: 20px;
+        margin: 0 auto 28px;
+        max-width: 760px;
+      }
+      
+      /* Services Blocks */
+      .services-preview { background: var(--light); }
+      .service-grid {
+        display: grid;
+        gap: 40px;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .service-card {
+        background: var(--white);
+        min-height: 330px;
+        padding: 32px 18px;
+        text-align: center;
+      }
+      .service-card img {
+        display: block;
+        height: 102px;
+        margin: 0 auto 24px;
+        object-fit: contain;
+      }
+      .service-card h3 { color: var(--navy); font-size: 22px; margin: 0 0 18px; }
+      .service-card p { color: #4d4d4d; font-size: 16px; margin: 0; }
 
-      .slider-btn.prev { left: 0; }
-      .slider-btn.next { right: 0; }
-
-      .slider-dots {
+      .page-hero {
+        align-items: center;
+        background:
+          linear-gradient(rgba(41, 79, 103, 0.78), rgba(41, 79, 103, 0.78)),
+          url("https://static.wixstatic.com/media/nsplsh_ef8bc5b3a9004734a27a3360342e6487~mv2.jpg/v1/fill/w_1898,h_998,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/nsplsh_ef8bc5b3a9004734a27a3360342e6487~mv2.jpg");
+        background-position: center;
+        background-size: cover;
+        color: var(--white);
         display: flex;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 2rem;
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
+        min-height: 430px;
+        padding: 70px 24px;
+        text-align: center;
+      }
+      .page-hero h1 {
+        color: var(--white);
+        font-family: var(--serif);
+        font-size: clamp(3.2rem, 8vw, 7rem);
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        line-height: 1.05;
+        margin: 0 auto 30px;
+        max-width: 900px;
+        text-transform: uppercase;
+      }
+      .page-hero p { font-size: 24px; margin: 0 auto 28px; max-width: 760px; }
+      
+      .content-panel {
+        background: var(--white);
+        font-size: 20px;
+        margin: 0 auto;
+        max-width: 930px;
+        padding: 62px 24px;
+        text-align: center;
+      }
+      .content-panel p { margin: 0 auto 24px; max-width: 820px; }
+      
+      .services-intro { text-align: center; }
+      .services-intro .small {
+        color: var(--navy);
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+      }
+      .services-intro h1 {
+        color: var(--navy);
+        font-family: var(--serif);
+        font-size: clamp(3rem, 7vw, 6.3rem);
+        font-weight: 400;
+        line-height: 1.05;
+        margin: 0 0 28px;
+      }
+      .services-intro p {
+        color: #4a4a4a;
+        font-size: 21px;
+        margin: 0 auto 30px;
+        max-width: 850px;
+      }
+      
+      .service-list { display: grid; gap: 42px; margin-top: 54px; }
+      .service-detail {
+        align-items: start;
+        display: grid;
+        gap: 34px;
+        grid-template-columns: 105px 270px 1fr;
+      }
+      .service-detail img { width: 86px; }
+      .service-detail h2 {
+        color: var(--navy);
+        font-size: 32px;
+        line-height: 1.05;
+        margin: 0;
+        text-transform: uppercase;
+      }
+      .service-detail p { color: #333; font-size: 18px; margin: 0; }
+
+      /* --- Updated Screenshot Testimonials Carousel --- */
+      .testimonial-section { background: var(--light); padding: 80px 24px; }
+      .testimonial-section h2 {
+        color: var(--navy);
+        font-family: var(--serif);
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 400;
+        margin: 0 0 45px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .testimonial-carousel {
+        align-items: center;
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 54px 1fr 54px;
+        margin: 0 auto;
+        max-width: 920px;
+        position: relative;
+      }
+      .carousel-track { min-height: 380px; position: relative; display: flex; align-items: center; justify-content: center; }
+      
+      .screenshot-slide {
+        display: none;
+        width: 100%;
+        max-width: 720px;
+        margin: 0 auto;
+        background: #fff;
+        border: 1px solid #d4dbe4;
+        box-shadow: var(--shadow);
+        padding: 12px;
+        border-radius: 8px;
+      }
+      .screenshot-slide.is-active { display: block; }
+      .screenshot-slide img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 4px;
       }
 
-      .dot {
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background-color: var(--gray);
+      .carousel-button {
+        background: transparent;
+        border: 0;
+        color: var(--navy);
         cursor: pointer;
-        transition: var(--transition);
+        font-family: var(--serif);
+        font-size: 58px;
+        line-height: 1;
+        transition: color 0.2s;
+        user-select: none;
       }
-
-      .dot.active {
-        background-color: var(--primary);
-        transform: scale(1.3);
+      .carousel-button:hover { color: var(--blue); }
+      .carousel-prev { left: 0; }
+      .carousel-next { right: 0; }
+      
+      .carousel-dots {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        grid-column: 1 / -1;
+        justify-content: center;
+        margin-top: 25px;
       }
+      .carousel-dots button {
+        background: #b8c2cf;
+        border: 0;
+        border-radius: 999px;
+        cursor: pointer;
+        height: 12px;
+        padding: 0;
+        width: 12px;
+        transition: background-color 0.2s;
+      }
+      .carousel-dots button.is-active { background: var(--navy); }
 
-      /* Contact Handles & Footer */
-      .contact-section {
+      /* Form & Sub-sections */
+      .embedded-form-page { background: #f0f0f0; padding: 0 12px 34px; }
+      .google-form-embed {
+        border: 0;
+        display: block;
+        margin: 0 auto;
+        max-width: 1040px;
+      }
+      .contact-layout {
+        display: grid;
+        gap: 60px;
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+      .contact-details {
+        color: var(--navy);
+        font-size: 24px;
+        line-height: 1.8;
         text-align: center;
       }
-
-      footer {
-        background-color: var(--primary);
-        color: #ffffff;
-        padding: 3rem 2rem;
+      .contact-details a { text-decoration: underline; }
+      .contact-form { display: grid; gap: 14px; }
+      .contact-form h2 {
+        color: var(--navy);
+        font-family: var(--serif);
+        font-size: 46px;
+        font-weight: 400;
+        line-height: 1.05;
+        margin: 0 0 12px;
         text-align: center;
-        margin-top: 5rem;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        border: 1px solid #999;
+        font: inherit;
+        padding: 12px;
+        width: 100%;
+      }
+      .contact-form textarea { min-height: 120px; resize: vertical; }
+      .form-note { color: var(--muted); font-size: 14px; margin: 0; }
+
+      .site-footer {
+        background: var(--white);
+        border-top: 1px solid #e5e5e5;
+        color: #444;
+        padding: 34px 24px 48px;
+        text-align: center;
+      }
+      .footer-social {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 18px;
+      }
+      .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .footer-nav a { font-size: 14px; font-weight: 700; text-transform: uppercase; }
+
+      /* Responsive Media Adaptations */
+      @media (max-width: 900px) {
+        .topbar-inner { align-items: flex-start; flex-direction: column; gap: 18px; }
+        .contact-strip { flex-wrap: wrap; white-space: normal; }
+        .nav-toggle { display: block; }
+        .site-nav { display: none; flex-direction: column; gap: 0; min-height: 0; padding: 0; }
+        .site-nav.is-open { display: flex; }
+        .site-nav a { border-top: 1px solid var(--border); padding: 16px; text-align: center; width: 100%; }
+        .service-grid { grid-template-columns: repeat(2, 1fr); }
+        .service-detail, .contact-layout { grid-template-columns: 1fr; text-align: center; }
+        .service-detail img { margin: 0 auto; }
+        .hero-carousel-container { height: 60vh; min-height: 480px; }
+        .testimonial-carousel { grid-template-columns: 42px 1fr 42px; }
+        .carousel-track { min-height: 260px; }
+        .screenshot-slide { padding: 8px; }
       }
 
-      footer p {
-        color: var(--gray);
-        margin-bottom: 1rem;
-      }
-
-      @media (max-width: 768px) {
-        .hero-content h1 { font-size: 2.2rem; }
-        .hero-content p { font-size: 1.1rem; }
-        .nav-links { display: none; }
-        .form-container { padding: 1.5rem; }
-        .testimonial-slider-container { padding: 0 2.5rem; }
-        .slider-btn { width: 36px; height: 36px; font-size: 1rem; }
+      @media (max-width: 560px) {
+        .topbar { padding-top: 20px; }
+        .logo img { width: 178px; }
+        .hero-carousel-container { min-height: 440px; }
+        .service-grid { grid-template-columns: 1fr; }
+        .contact-strip { font-size: 13px; }
       }
     </style>
   </head>
   <body>
-
     <header>
-      <nav class="nav-container">
-        <a href="#" class="logo">Moville Mortgage</a>
-        <ul class="nav-links">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#prequalify">Pre-Qualify</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+      <div class="topbar">
+        <div class="topbar-inner">
+          <a class="logo" href="#home" aria-label="Moville Mortgage and Finance home">
+            <img src="https://static.wixstatic.com/media/683a98_69417a2a31e76ea6e9c3d2ca92005860.jpg/v1/fill/w_201,h_68,al_c,q_80,enc_avif,quality_auto/683a98_69417a2a31e76ea6e9c3d2ca92005860.jpg" alt="Moville Mortgage and Finance">
+          </a>
+          <div class="contact-strip">
+            <span>Contact: IL</span>
+            <a href="tel:+972737962226">054 522 6701</a>
+            <span>|</span>
+            <span>US</span>
+            <a href="tel:+12013773418">(208) 668-4553</a>
+            <a href="https://www.linkedin.com/company/moville-mortgage-&-finance/" aria-label="LinkedIn">
+              <img class="social-icon" src="https://static.wixstatic.com/media/48a2a42b19814efaa824450f23e8a253.png/v1/fill/w_25,h_25,al_c,q_85,enc_avif,quality_auto/48a2a42b19814efaa824450f23e8a253.png" alt="">
+            </a>
+            <a href="https://www.facebook.com/Moville-Mortgage-%20Finance-141629142652921/?epa=SEARCH_BOX" aria-label="Facebook">
+              <img class="social-icon" src="https://static.wixstatic.com/media/e316f544f9094143b9eac01f1f19e697.png/v1/fill/w_25,h_25,al_c,q_85,enc_avif,quality_auto/e316f544f9094143b9eac01f1f19e697.png" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="main-nav-wrap">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#about">About Us</a>
+          <a href="#services">Services</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#application">Apply Now</a>
+          <a href="#contact">Contact Us</a>
+        </nav>
+      </div>
     </header>
 
-    <div class="hero-carousel" id="heroCarousel">
-      <div class="hero-slide active slide-geo-1">
-        <div class="hero-content">
-          <h1>Securing Your Property in Israel</h1>
-          <p>Expert mortgage and financing solutions tailored for international and local buyers.</p>
-          <a href="#prequalify" class="btn">Get Pre-Qualified</a>
+    <main>
+      <section class="hero-carousel-container hero" id="home">
+        <div class="hero-slide hero-slide-1 is-active" data-hero-slide>
+          <div class="hero-content-box">
+            <h1>Moville Mortgage<br>&amp; Finance ltd</h1>
+            <p>We guide you from the moment you make the decision you want to buy a property in Israel (this can be long before you have actually found a property)</p>
+            <a class="wix-button" href="#application">Apply Now</a>
+          </div>
         </div>
-      </div>
-      <div class="hero-slide slide-geo-2">
-        <div class="hero-content">
-          <h1>Seamless Financial Guidance</h1>
-          <p>Navigating complex banking regulations so you can focus on finding your perfect home.</p>
-          <a href="#services" class="btn">Explore Services</a>
-        </div>
-      </div>
-      <div class="hero-slide slide-geo-3">
-        <div class="hero-content">
-          <h1>Reliable Capital Structuring</h1>
-          <p>Custom tailored portfolios to achieve maximum leverage and optimize repayment terms.</p>
-          <a href="#contact" class="btn">Connect With Us</a>
-        </div>
-      </div>
-    </div>
 
-    <section id="services">
-      <h2 class="section-title">Our Financing Services</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <h3>Residential Mortgages</h3>
-          <p>Comprehensive assistance for first-time buyers and families acquiring primary or secondary residences in Israel.</p>
+        <div class="hero-slide hero-slide-2" data-hero-slide>
+          <div class="hero-content-box">
+            <h1>Expert Mortgage Solutions</h1>
+            <p>Navigating competitive options and real-time bank tracking to find the optimal financing fit for your investments.</p>
+            <a class="wix-button" href="#services">Our Services</a>
+          </div>
         </div>
-        <div class="service-card">
-          <h3>Non-Resident Loans</h3>
-          <p>Specialized options tailored specifically for global buyers, foreign investors, and diaspora communities buying property.</p>
-        </div>
-        <div class="service-card">
-          <h3>Refinancing Solutions</h3>
-          <p>Optimize existing debt profiles, lower monthly payments, and adjust structures to match current market conditions.</p>
-        </div>
-      </div>
-    </section>
 
-    <section id="prequalify" class="form-section">
-      <h2 class="section-title">Pre-Qualification Engine</h2>
-      <div class="form-container">
-        <form id="prequalForm" onsubmit="handleFormSubmit(event)">
-          <div class="form-group">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" required placeholder="John Doe">
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" required placeholder="john@example.com">
-          </div>
-          <div class="form-group">
-            <label for="citizenship">Citizenship Status</label>
-            <select id="citizenship" required>
-              <option value="">Select status...</option>
-              <option value="israeli">Israeli Citizen</option>
-              <option value="foreign">Foreign National</option>
-              <option value="dual">Dual Citizen</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="propertyValue">Estimated Property Value (ILS)</label>
-            <input type="number" id="propertyValue" required placeholder="e.g. 2500000">
-          </div>
-          <button type="submit" class="btn" style="width: 100%;">Submit Pre-Qualification</button>
-        </form>
-      </div>
-    </section>
+        <button class="hero-arrow hero-prev" type="button" aria-label="Previous Slide" data-hero-prev>&lsaquo;</button>
+        <button class="hero-arrow hero-next" type="button" aria-label="Next Slide" data-hero-next>&rsaquo;</button>
+      </section>
 
-    <section id="testimonials" class="testimonials-section">
-      <h2 class="section-title">Client Testimonials</h2>
-      <div class="testimonial-slider-container">
-        
-        <button class="slider-btn prev" id="sliderPrev" aria-label="Previous testimonial">&#10094;</button>
-        <button class="slider-btn next" id="sliderNext" aria-label="Next testimonial">&#10095;</button>
-        
-        <div class="testimonial-slider-wrapper">
-          <div class="testimonial-slider-track" id="testimonialTrack">
+      <section class="section lead-block center">
+        <div class="section-inner">
+          <h2>If you're thinking about a mortgage in Israel</h2>
+          <p>It's never too early to apply! Find out if you're qualified for a mortgage by filling out our initial form</p>
+          <a class="wix-button" href="#application">Find Out Here</a>
+        </div>
+      </section>
+
+      <section class="section services-preview">
+        <div class="section-inner">
+          <div class="service-grid">
+            <a class="service-card" href="#services">
+              <img src="https://static.wixstatic.com/media/04af08_519bbc1abef941d7a993b46fd6f8f1b2~mv2.png/v1/fill/w_98,h_104,al_c,q_85,enc_avif,quality_auto/Asset%202_4x.png" alt="">
+              <h3>Residential Purchases</h3>
+              <p>We'll guide you through the entire process - before you have a property until after you've acquired it.</p>
+            </a>
+            <a class="service-card" href="#services">
+              <img src="https://static.wixstatic.com/media/04af08_713c9c2ff2044b0fbc7e1a633a0fe860~mv2.png/v1/fill/w_105,h_105,al_c,q_85,enc_avif,quality_auto/Asset%203_4x.png" alt="">
+              <h3>Residential Refinancing</h3>
+              <p>We are here to help we can help you assess what is right for you and carry out the entire transaction for you.</p>
+            </a>
+            <a class="service-card" href="#services">
+              <img src="https://static.wixstatic.com/media/04af08_36517707d94d4fdf97a8ba91f5b1dfb2~mv2.png/v1/fill/w_100,h_101,al_c,q_85,enc_avif,quality_auto/Asset%201_4x.png" alt="">
+              <h3>Construction Financing</h3>
+              <p>We can help you assess the leverage possible, schedule of payments as well as many other aspects.</p>
+            </a>
+            <a class="service-card" href="#services">
+              <img src="https://static.wixstatic.com/media/04af08_1a59961685e94430b840b0a84099848b~mv2.png/v1/fill/w_103,h_103,al_c,q_85,enc_avif,quality_auto/Asset%204_4x.png" alt="">
+              <h3>Commercial Real Estate</h3>
+              <p>When it comes to commercial real estate we have experience in all aspects of the market.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-hero" id="about">
+        <div>
+          <h1>About Us</h1>
+          <p>You can rely on Moville Mortgage and Finance as our past clients have a resource for guidance and peace of mind before, during, and after their Israeli mortgage experience.</p>
+          <a class="wix-button" href="#application">Apply Now</a>
+        </div>
+      </section>
+
+      <section class="content-panel">
+        <p>Clients often work with us long before they start looking for a property to buy in Israel because we help them understand the mortgage options available to them as well as educate them about possible ramifications and assist them in making informed decisions in choosing the mortgage options best suited for them.</p>
+        <p>No one says it better than our previous clients. <a href="#testimonials">See what they have to say about their Moville experience.</a></p>
+        <p>Let us help you successfully navigate the Israel mortgage market with confidence and peace of mind.</p>
+        <a class="wix-button" href="#testimonials">Hear What Our Clients Have To Say</a>
+      </section>
+
+      <section class="section services-intro" id="services">
+        <div class="section-inner">
+          <p class="small">Our clients call us</p>
+          <h1>Their Financial Concierge</h1>
+          <p>Whatever you call us, our mission is giving you piece of mind while helping you understand the Israeli mortgage process and arranging a mortgage for you that fits your needs, while saving you money and time.</p>
+          <a class="wix-button" href="#application">Apply Now</a>
+
+          <div class="service-list">
+            <article class="service-detail">
+              <img src="https://static.wixstatic.com/media/04af08_1b50e2174e9040179a54f4d38addd38d~mv2.png/v1/fill/w_164,h_170,al_c,q_85,enc_avif,quality_auto/Asset%208_4x.png" alt="">
+              <h2>Purchase<br>Financing</h2>
+              <p>We can start with you long before you have a property, and help you set a budget for what you can afford and how much of a loan amount is right for you. You'll learn how the amount of leverage (the ratio of your loan to property value or Loan to value LTV) as well as the type &amp; location of the property can affect the cost and terms of your financing. We can give you the knowledge you need to intelligently assess potential properties and guide you through the entire process.</p>
+            </article>
+            <article class="service-detail">
+              <img src="https://static.wixstatic.com/media/04af08_a338631c1a29463f808060f2a538ba64~mv2.png/v1/fill/w_170,h_170,al_c,q_85,enc_avif,quality_auto/Asset%207_4x.png" alt="">
+              <h2>Refinancing</h2>
+              <p>There may be any number of reasons for refinancing a mortgage from lowering your monthly payment, saving interest cost on an annual or lifetime basis (yes there is a difference) pulling equity out of your property (Cash-Out), or using an existing property As additional collateral in purchasing another property. Whatever the reason is we are here to help we can help you assess what is right for you and carry out the entire transaction for you.</p>
+            </article>
+            <article class="service-detail">
+              <img src="https://static.wixstatic.com/media/04af08_8fc5393642664e6090d0406d0aef4c08~mv2.png/v1/fill/w_170,h_170,al_c,q_85,enc_avif,quality_auto/Asset%206_4x.png" alt="">
+              <h2>Commercial<br>Real Estate</h2>
+              <p>Moville Works with both Israeli and foreign-based investors arranging financing for their large-scale residential, retail, industrial, or alternative energy investments. When it comes to commercial real estate we have experience in all aspects of the market from owner occupied to investment properties whether a purchase transaction, a complex restructurings or simple refinancing we are there for you.</p>
+            </article>
+            <article class="service-detail">
+              <img src="https://static.wixstatic.com/media/04af08_a0d3da0fc68842819b1d97f25c8e2bdb~mv2.png/v1/fill/w_168,h_170,al_c,q_85,enc_avif,quality_auto/Asset%205_4x.png" alt="">
+              <h2>Construction Financing</h2>
+              <p>Whether you are buying in a project or building on your own lot construction loans in Israel have their own layer of complexity and many other aspects of the Israeli mortgage market the main similarity they share with loans with similar names in Western countries is the name. We can help you assess the leverage possible, schedule of payments as well as many other aspects.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- Re-engineered Testimonials Panel with 12 Local JPEGs --- -->
+      <section class="section testimonial-section center" id="testimonials">
+        <div class="section-inner">
+          <h2>Hear what our clients have to say</h2>
+          <div class="testimonial-carousel" data-carousel="testimonials">
+            <button class="carousel-button carousel-prev" type="button" aria-label="Previous testimonial" data-carousel-prev>&lsaquo;</button>
             
-            <div class="testimonial-image-slide"><img src="screenshot1.jpg" alt="Client Review 1" loading="lazy"></div>
-            <div class="testimonial-image-slide"><img src="screenshot2.jpg" alt="Client Review 2" loading="lazy"></div>
-            <div class="testimonial-image-slide"><img src="screenshot3.jpg" alt="Client Review 3" loading="lazy"></div>
-            <div class="testimonial-image-slide"><img src="screenshot4.jpg" alt="Client Review 4" loading="lazy"></div>
-            <div class="testimonial-image-slide"><img src="screenshot5.jpg" alt="Client Review 5" loading="lazy"></div>
-            <div class="testimonial-image-slide"><img src="screenshot6.jpg" alt="Client Review 6" loading="lazy"></div>
-            <div class="testimonial-image-slide"><img src="screenshot7.jpg" alt="Client Review 7" loading="lazy"></div>
-            <div class="testimonial-image-slide"><img src="screenshot8.jpg" alt="Client Review 8" loading="lazy"></div>
-            <div class="testimonial-image-slide"><img src="screenshot9.jpg" alt="Client Review 9" loading="lazy"></div>
-            <div class="testimonial-image-slide"><img src="screenshot10.jpg" alt="Client Review 10" loading="lazy"></div>
-            <div class="testimonial-image-slide"><img src="screenshot11.jpg" alt="Client Review 11" loading="lazy"></div>
-            <div class="testimonial-image-slide"><img src="screenshot12.jpg" alt="Client Review 12" loading="lazy"></div>
+            <div class="carousel-track">
+              <div class="screenshot-slide is-active" data-carousel-slide>
+                <img src="screenshot1.jpg" alt="Client Testimonial 1">
+              </div>
+              <div class="screenshot-slide" data-carousel-slide>
+                <img src="screenshot2.jpg" alt="Client Testimonial 2">
+              </div>
+              <div class="screenshot-slide" data-carousel-slide>
+                <img src="screenshot3.jpg" alt="Client Testimonial 3">
+              </div>
+              <div class="screenshot-slide" data-carousel-slide>
+                <img src="screenshot4.jpg" alt="Client Testimonial 4">
+              </div>
+              <div class="screenshot-slide" data-carousel-slide>
+                <img src="screenshot5.jpg" alt="Client Testimonial 5">
+              </div>
+              <div class="screenshot-slide" data-carousel-slide>
+                <img src="screenshot6.jpg" alt="Client Testimonial 6">
+              </div>
+              <div class="screenshot-slide" data-carousel-slide>
+                <img src="screenshot7.jpg" alt="Client Testimonial 7">
+              </div>
+              <div class="screenshot-slide" data-carousel-slide>
+                <img src="screenshot8.jpg" alt="Client Testimonial 8">
+              </div>
+              <div class="screenshot-slide" data-carousel-slide>
+                <img src="screenshot9.jpg" alt="Client Testimonial 9">
+              </div>
+              <div class="screenshot-slide" data-carousel-slide>
+                <img src="screenshot10.jpg" alt="Client Testimonial 10">
+              </div>
+              <div class="screenshot-slide" data-carousel-slide>
+                <img src="screenshot11.jpg" alt="Client Testimonial 11">
+              </div>
+              <div class="screenshot-slide" data-carousel-slide>
+                <img src="screenshot12.jpg" alt="Client Testimonial 12">
+              </div>
+            </div>
+
+            <button class="carousel-button carousel-next" type="button" aria-label="Next testimonial" data-carousel-next>&rsaquo;</button>
             
+            <div class="carousel-dots" aria-label="Testimonial navigation">
+              <button class="is-active" type="button" aria-label="Show testimonial 1" data-carousel-dot></button>
+              <button type="button" aria-label="Show testimonial 2" data-carousel-dot></button>
+              <button type="button" aria-label="Show testimonial 3" data-carousel-dot></button>
+              <button type="button" aria-label="Show testimonial 4" data-carousel-dot></button>
+              <button type="button" aria-label="Show testimonial 5" data-carousel-dot></button>
+              <button type="button" aria-label="Show testimonial 6" data-carousel-dot></button>
+              <button type="button" aria-label="Show testimonial 7" data-carousel-dot></button>
+              <button type="button" aria-label="Show testimonial 8" data-carousel-dot></button>
+              <button type="button" aria-label="Show testimonial 9" data-carousel-dot></button>
+              <button type="button" aria-label="Show testimonial 10" data-carousel-dot></button>
+              <button type="button" aria-label="Show testimonial 11" data-carousel-dot></button>
+              <button type="button" aria-label="Show testimonial 12" data-carousel-dot></button>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="slider-dots" id="sliderDots"></div>
+      <section class="page-hero" id="application">
+        <div>
+          <h1>Moville Mortgage<br>Application Form</h1>
+        </div>
+      </section>
+
+      <section class="embedded-form-page">
+        <iframe
+          class="google-form-embed"
+          src="https://docs.google.com/forms/d/1bDk2vM-P3Sjl3TyouJXeqOEmeCnnePtITesPVH4ub4Q/viewform?embedded=true"
+          title="Moville Mortgage Pre-Qualification Form"
+          width="100%"
+          height="1900"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0">
+          Loading...
+        </iframe>
+      </section>
+
+      <section class="page-hero" id="contact">
+        <div>
+          <h1>Contact<br>Us</h1>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner contact-layout">
+          <div class="contact-details">
+            <p>Israel: <a href="tel:+972737962226">073-796-2226</a></p>
+            <p>US: <a href="tel:+12013773418">201-377-3418</a></p>
+            <p><a href="mailto:info@movillefinance.com?subject=Would%20Love%20to%20Hear%20More%20About%20Your%20Services">INFO@MOVILLEFINANCE.COM</a></p>
+          </div>
+          <form class="contact-form" data-mail-form>
+            <h2>We Would Love<br>To Hear From You</h2>
+            <input name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input name="phone" placeholder="Phone">
+            <textarea name="message" placeholder="Message" required></textarea>
+            <button class="wix-button" type="submit">Submit</button>
+            <p class="form-note">This static form opens your email app addressed to info@movillefinance.com.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-social">
+        <a href="https://il.linkedin.com/in/moshewilshinsky" aria-label="LinkedIn"><img class="social-icon" src="https://static.wixstatic.com/media/48a2a42b19814efaa824450f23e8a253.png/v1/fill/w_20,h_20,al_c,q_85,enc_avif,quality_auto/48a2a42b19814efaa824450f23e8a253.png" alt=""></a>
+        <a href="https://www.facebook.com/Moville-Mortgage-%20Finance-141629142652921/?epa=SEARCH_BOX" aria-label="Facebook"><img class="social-icon" src="https://static.wixstatic.com/media/e316f544f9094143b9eac01f1f19e697.png/v1/fill/w_20,h_20,al_c,q_85,enc_avif,quality_auto/e316f544f9094143b9eac01f1f19e697.png" alt=""></a>
       </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-      <h2 class="section-title">Connect With Us</h2>
-      <p style="margin-bottom: 2rem; font-size: 1.2rem;">Ready to take the next step? Reach out directly to our financing specialists.</p>
-      <a href="mailto:info@movillefinance.com" class="btn">Email Operations Team</a>
-    </section>
-
-    <footer>
-      <p>&copy; 2026 Moville Mortgage & Finance LTD. All rights reserved.</p>
-      <p>Providing custom financial architectures for residential acquisitions in Israel.</p>
+      <p>Moville Finance | Copyright 2026</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#application">Apply Now</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
     </footer>
 
     <script>
-      // ENGINE 1: Top Native Hero Auto-Fading Carousel
-      (function() {
-        const slides = document.querySelectorAll('#heroCarousel .hero-slide');
-        let currentSlide = 0;
-        const slideInterval = 5000;
+      // Navigation Toggle Engine
+      const navToggle = document.querySelector(".nav-toggle");
+      const siteNav = document.querySelector(".site-nav");
 
-        function nextHeroSlide() {
-          slides[currentSlide].classList.remove('active');
-          currentSlide = (currentSlide + 1) % slides.length;
-          slides[currentSlide].classList.add('active');
-        }
-
-        if(slides.length > 0) {
-          setInterval(nextHeroSlide, slideInterval);
-        }
-      })();
-
-      // ENGINE 2: Screenshot Testimonials Slider Framework
-      (function() {
-        const track = document.getElementById('testimonialTrack');
-        const slides = document.querySelectorAll('.testimonial-image-slide');
-        const prevBtn = document.getElementById('sliderPrev');
-        const nextBtn = document.getElementById('sliderNext');
-        const dotsContainer = document.getElementById('sliderDots');
-        
-        let currentIndex = 0;
-        const totalSlides = slides.length;
-
-        if (totalSlides === 0) return;
-
-        // Automatically establish nav dots matching the 12 array slots
-        for (let i = 0; i < totalSlides; i++) {
-          const dot = document.createElement('div');
-          dot.classList.add('dot');
-          if (i === 0) dot.classList.add('active');
-          dot.addEventListener('click', () => updateSlider(i));
-          dotsContainer.appendChild(dot);
-        }
-
-        const dots = document.querySelectorAll('.slider-dots .dot');
-
-        function updateSlider(index) {
-          if (index >= totalSlides) currentIndex = 0;
-          else if (index < 0) currentIndex = totalSlides - 1;
-          else currentIndex = index;
-
-          track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-          dots.forEach((dot, i) => {
-            if (i === currentIndex) dot.classList.add('active');
-            else dot.classList.remove('active');
-          });
-        }
-
-        nextBtn.addEventListener('click', () => updateSlider(currentIndex + 1));
-        prevBtn.addEventListener('click', () => updateSlider(currentIndex - 1));
-
-        window.addEventListener('resize', () => {
-          track.style.transition = 'none';
-          track.style.transform = `translateX(-${currentIndex * 100}%)`;
-          setTimeout(() => {
-            track.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-          }, 50);
+      if (navToggle && siteNav) {
+        navToggle.addEventListener("click", () => {
+          const isOpen = siteNav.classList.toggle("is-open");
+          navToggle.setAttribute("aria-expanded", String(isOpen));
         });
-      })();
+      }
 
-      function handleFormSubmit(event) {
-        event.preventDefault();
-        alert('Data parameters received successfully. A representative will contact you.');
-        document.getElementById('prequalForm').reset();
+      // Mail Form Engine
+      document.querySelectorAll("[data-mail-form]").forEach((form) => {
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const data = new FormData(form);
+          const subject = encodeURIComponent("Website inquiry from Moville Finance site");
+          const body = encodeURIComponent(
+            `Name: ${data.get("name") || ""}\nEmail: ${data.get("email") || ""}\nPhone: ${data.get("phone") || ""}\n\nMessage:\n${data.get("message") || ""}`
+          );
+          window.location.href = `mailto:info@movillefinance.com?subject=${subject}&body=${body}`;
+        });
+      });
+
+      // --- Fully Independent Carousel Engines ---
+      // 1. Top Hero Panel Carousel
+      const heroContainer = document.querySelector('.hero-carousel-container');
+      if (heroContainer) {
+        const slides = Array.from(heroContainer.querySelectorAll('[data-hero-slide]'));
+        const prevBtn = heroContainer.querySelector('[data-hero-prev]');
+        const nextBtn = heroContainer.querySelector('[data-hero-next]');
+        let currentHero = 0;
+
+        function showHeroSlide(idx) {
+          slides[currentHero].classList.remove('is-active');
+          currentHero = (idx + slides.length) % slides.length;
+          slides[currentHero].classList.add('is-active');
+        }
+
+        if (prevBtn) prevBtn.addEventListener('click', () => showHeroSlide(currentHero - 1));
+        if (nextBtn) nextBtn.addEventListener('click', () => showHeroSlide(currentHero + 1));
+        
+        setInterval(() => showHeroSlide(currentHero + 1), 7000);
+      }
+
+      // 2. Testimonials Carousel (Handles all 12 Screenshot Slides cleanly)
+      const testCarousel = document.querySelector('[data-carousel="testimonials"]');
+      if (testCarousel) {
+        const slides = Array.from(testCarousel.querySelectorAll('[data-carousel-slide]'));
+        const dots = Array.from(testCarousel.querySelectorAll('[data-carousel-dot]'));
+        const prevBtn = testCarousel.querySelector('[data-carousel-prev]');
+        const nextBtn = testCarousel.querySelector('[data-carousel-next]');
+        let currentTest = 0;
+
+        function showTestimonialSlide(idx) {
+          slides[currentTest].classList.remove('is-active');
+          if (dots[currentTest]) dots[currentTest].classList.remove('is-active');
+          
+          currentTest = (idx + slides.length) % slides.length;
+          
+          slides[currentTest].classList.add('is-active');
+          if (dots[currentTest]) dots[currentTest].classList.add('is-active');
+        }
+
+        if (prevBtn) prevBtn.addEventListener('click', () => showTestimonialSlide(currentTest - 1));
+        if (nextBtn) nextBtn.addEventListener('click', () => showTestimonialSlide(currentTest + 1));
+        dots.forEach((dot, index) => dot.addEventListener('click', () => showTestimonialSlide(index)));
       }
     </script>
   </body>
