@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Israel Finance and Mortgage Company | Moville</title>
+    <meta name="description" content="Moville Mortgage & Finance helps clients navigate mortgages and property financing in Israel.">
+    <style>
+      :root {
+        --primary: #0f2d59;
+        --secondary: #d4af37;
+        --dark: #1a1a1a;
+        --light: #f8f9fa;
+        --gray: #e0e0e0;
+        --text: #333333;
+        --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: var(--text);
+        line-height: 1.6;
+        background-color: #ffffff;
+      }
+
+      /* Navigation & Header */
+      header {
+        background-color: var(--primary);
+        color: #ffffff;
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: var(--secondary);
+        text-decoration: none;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover {
+        color: var(--secondary);
+      }
+
+      /* ==========================================================================
+         NATIVE HERO CAROUSEL (Renders entirely without image asset dependencies)
+         ========================================================================== */
+      .hero-carousel {
+        position: relative;
+        height: 65vh;
+        min-height: 450px;
+        overflow: hidden;
+      }
+
+      .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+      }
+
+      /* Native Geometric Graphics Engines instead of external images */
+      .slide-geo-1 {
+        background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                    linear-gradient(135deg, #0f2d59 0%, #07162c 100%);
+      }
+
+      .slide-geo-2 {
+        background: linear-gradient(45deg, rgba(15, 45, 89, 0.95) 0%, rgba(7, 22, 44, 0.95) 100%),
+                    repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(212, 175, 55, 0.03) 40px, rgba(212, 175, 55, 0.03) 80px);
+      }
+
+      .slide-geo-3 {
+        background: radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+                    linear-gradient(180deg, #0a1f3d 0%, #030a14 100%);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #ffffff;
+        max-width: 850px;
+        padding: 0 2rem;
+      }
+
+      .hero-content h1 {
+        font-size: 3.2rem;
+        margin-bottom: 1.2rem;
+        color: #ffffff;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+
+      .hero-content p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 300;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--secondary);
+        color: var(--primary);
+        padding: 0.85rem 2.2rem;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 4px;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: #ffffff;
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      /* Global Content Section Layouts */
+      section {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 2.25rem;
+        color: var(--primary);
+      }
+
+      .section-title::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 3px;
+        background-color: var(--secondary);
+        margin: 0.5rem auto 0;
+      }
+
+      /* Services Matrix Layout */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .service-card {
+        background: var(--light);
+        padding: 2.5rem 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+        transition: var(--transition);
+        border-top: 4px solid var(--primary);
+      }
+
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+      }
+
+      .service-card h3 {
+        margin-bottom: 1rem;
+        color: var(--primary);
+      }
+
+      /* Pre-Qualification Form Section */
+      .form-section {
+        background-color: var(--light);
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .form-container {
+        max-width: 700px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 3rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      .form-group input, .form-group select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid var(--gray);
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      /* ==========================================================================
+         TESTIMONIALS SLIDER LAYER (SKELETON DESIGNED FOR EXACTLY 12 SCREENSHOTS)
+         ========================================================================== */
+      .testimonials-section {
+        background-color: #ffffff;
+        overflow: hidden;
+      }
+
+      .testimonial-slider-container {
+        position: relative;
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 0 3.5rem;
+      }
+
+      .testimonial-slider-wrapper {
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .testimonial-slider-track {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        align-items: center;
+      }
+
+      .testimonial-image-slide {
+        min-width: 100%;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+      }
+
+      /* Controls dynamic screenshot size transformations natively */
+      .testimonial-image-slide img {
+        max-width: 100%;
+        height: auto;
+        max-height: 550px;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        border: 1px solid var(--gray);
+        display: block;
+        background-color: #fcfcfc;
+      }
+
+      .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--primary);
+        color: #ffffff;
+        border: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        transition: var(--transition);
+        z-index: 10;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      }
+
+      .slider-btn:hover {
+        background-color: var(--secondary);
+        color: var(--primary);
+      }
+
+      .slider-btn.prev { left: 0; }
+      .slider-btn.next { right: 0; }
+
+      .slider-dots {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 2rem;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background-color: var(--gray);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .dot.active {
+        background-color: var(--primary);
+        transform: scale(1.3);
+      }
+
+      /* Contact Handles & Footer */
+      .contact-section {
+        text-align: center;
+      }
+
+      footer {
+        background-color: var(--primary);
+        color: #ffffff;
+        padding: 3rem 2rem;
+        text-align: center;
+        margin-top: 5rem;
+      }
+
+      footer p {
+        color: var(--gray);
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .hero-content h1 { font-size: 2.2rem; }
+        .hero-content p { font-size: 1.1rem; }
+        .nav-links { display: none; }
+        .form-container { padding: 1.5rem; }
+        .testimonial-slider-container { padding: 0 2.5rem; }
+        .slider-btn { width: 36px; height: 36px; font-size: 1rem; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <nav class="nav-container">
+        <a href="#" class="logo">Moville Mortgage</a>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#prequalify">Pre-Qualify</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="hero-carousel" id="heroCarousel">
+      <div class="hero-slide active slide-geo-1">
+        <div class="hero-content">
+          <h1>Securing Your Property in Israel</h1>
+          <p>Expert mortgage and financing solutions tailored for international and local buyers.</p>
+          <a href="#prequalify" class="btn">Get Pre-Qualified</a>
+        </div>
+      </div>
+      <div class="hero-slide slide-geo-2">
+        <div class="hero-content">
+          <h1>Seamless Financial Guidance</h1>
+          <p>Navigating complex banking regulations so you can focus on finding your perfect home.</p>
+          <a href="#services" class="btn">Explore Services</a>
+        </div>
+      </div>
+      <div class="hero-slide slide-geo-3">
+        <div class="hero-content">
+          <h1>Reliable Capital Structuring</h1>
+          <p>Custom tailored portfolios to achieve maximum leverage and optimize repayment terms.</p>
+          <a href="#contact" class="btn">Connect With Us</a>
+        </div>
+      </div>
+    </div>
+
+    <section id="services">
+      <h2 class="section-title">Our Financing Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Residential Mortgages</h3>
+          <p>Comprehensive assistance for first-time buyers and families acquiring primary or secondary residences in Israel.</p>
+        </div>
+        <div class="service-card">
+          <h3>Non-Resident Loans</h3>
+          <p>Specialized options tailored specifically for global buyers, foreign investors, and diaspora communities buying property.</p>
+        </div>
+        <div class="service-card">
+          <h3>Refinancing Solutions</h3>
+          <p>Optimize existing debt profiles, lower monthly payments, and adjust structures to match current market conditions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="prequalify" class="form-section">
+      <h2 class="section-title">Pre-Qualification Engine</h2>
+      <div class="form-container">
+        <form id="prequalForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label for="citizenship">Citizenship Status</label>
+            <select id="citizenship" required>
+              <option value="">Select status...</option>
+              <option value="israeli">Israeli Citizen</option>
+              <option value="foreign">Foreign National</option>
+              <option value="dual">Dual Citizen</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="propertyValue">Estimated Property Value (ILS)</label>
+            <input type="number" id="propertyValue" required placeholder="e.g. 2500000">
+          </div>
+          <button type="submit" class="btn" style="width: 100%;">Submit Pre-Qualification</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section">
+      <h2 class="section-title">Client Testimonials</h2>
+      <div class="testimonial-slider-container">
+        
+        <button class="slider-btn prev" id="sliderPrev" aria-label="Previous testimonial">&#10094;</button>
+        <button class="slider-btn next" id="sliderNext" aria-label="Next testimonial">&#10095;</button>
+        
+        <div class="testimonial-slider-wrapper">
+          <div class="testimonial-slider-track" id="testimonialTrack">
+            
+            <div class="testimonial-image-slide"><img src="screenshot1.jpg" alt="Client Review 1" loading="lazy"></div>
+            <div class="testimonial-image-slide"><img src="screenshot2.jpg" alt="Client Review 2" loading="lazy"></div>
+            <div class="testimonial-image-slide"><img src="screenshot3.jpg" alt="Client Review 3" loading="lazy"></div>
+            <div class="testimonial-image-slide"><img src="screenshot4.jpg" alt="Client Review 4" loading="lazy"></div>
+            <div class="testimonial-image-slide"><img src="screenshot5.jpg" alt="Client Review 5" loading="lazy"></div>
+            <div class="testimonial-image-slide"><img src="screenshot6.jpg" alt="Client Review 6" loading="lazy"></div>
+            <div class="testimonial-image-slide"><img src="screenshot7.jpg" alt="Client Review 7" loading="lazy"></div>
+            <div class="testimonial-image-slide"><img src="screenshot8.jpg" alt="Client Review 8" loading="lazy"></div>
+            <div class="testimonial-image-slide"><img src="screenshot9.jpg" alt="Client Review 9" loading="lazy"></div>
+            <div class="testimonial-image-slide"><img src="screenshot10.jpg" alt="Client Review 10" loading="lazy"></div>
+            <div class="testimonial-image-slide"><img src="screenshot11.jpg" alt="Client Review 11" loading="lazy"></div>
+            <div class="testimonial-image-slide"><img src="screenshot12.jpg" alt="Client Review 12" loading="lazy"></div>
+            
+          </div>
+        </div>
+
+        <div class="slider-dots" id="sliderDots"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2 class="section-title">Connect With Us</h2>
+      <p style="margin-bottom: 2rem; font-size: 1.2rem;">Ready to take the next step? Reach out directly to our financing specialists.</p>
+      <a href="mailto:info@movillefinance.com" class="btn">Email Operations Team</a>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Moville Mortgage & Finance LTD. All rights reserved.</p>
+      <p>Providing custom financial architectures for residential acquisitions in Israel.</p>
+    </footer>
+
+    <script>
+      // ENGINE 1: Top Native Hero Auto-Fading Carousel
+      (function() {
+        const slides = document.querySelectorAll('#heroCarousel .hero-slide');
+        let currentSlide = 0;
+        const slideInterval = 5000;
+
+        function nextHeroSlide() {
+          slides[currentSlide].classList.remove('active');
+          currentSlide = (currentSlide + 1) % slides.length;
+          slides[currentSlide].classList.add('active');
+        }
+
+        if(slides.length > 0) {
+          setInterval(nextHeroSlide, slideInterval);
+        }
+      })();
+
+      // ENGINE 2: Screenshot Testimonials Slider Framework
+      (function() {
+        const track = document.getElementById('testimonialTrack');
+        const slides = document.querySelectorAll('.testimonial-image-slide');
+        const prevBtn = document.getElementById('sliderPrev');
+        const nextBtn = document.getElementById('sliderNext');
+        const dotsContainer = document.getElementById('sliderDots');
+        
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        if (totalSlides === 0) return;
+
+        // Automatically establish nav dots matching the 12 array slots
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement('div');
+          dot.classList.add('dot');
+          if (i === 0) dot.classList.add('active');
+          dot.addEventListener('click', () => updateSlider(i));
+          dotsContainer.appendChild(dot);
+        }
+
+        const dots = document.querySelectorAll('.slider-dots .dot');
+
+        function updateSlider(index) {
+          if (index >= totalSlides) currentIndex = 0;
+          else if (index < 0) currentIndex = totalSlides - 1;
+          else currentIndex = index;
+
+          track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+          dots.forEach((dot, i) => {
+            if (i === currentIndex) dot.classList.add('active');
+            else dot.classList.remove('active');
+          });
+        }
+
+        nextBtn.addEventListener('click', () => updateSlider(currentIndex + 1));
+        prevBtn.addEventListener('click', () => updateSlider(currentIndex - 1));
+
+        window.addEventListener('resize', () => {
+          track.style.transition = 'none';
+          track.style.transform = `translateX(-${currentIndex * 100}%)`;
+          setTimeout(() => {
+            track.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+          }, 50);
+        });
+      })();
+
+      function handleFormSubmit(event) {
+        event.preventDefault();
+        alert('Data parameters received successfully. A representative will contact you.');
+        document.getElementById('prequalForm').reset();
+      }
+    </script>
+  </body>
+</html>
